@@ -54,6 +54,8 @@ src_install() {
 	doins src/app/bin/translations/*
 
 	domenu dist/${PN}.desktop
+	doicon -s 64 dist/${PN}.png
+
 	doman dist/debian/${PN}.1
 
 	einstalldocs
