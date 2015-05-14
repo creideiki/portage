@@ -34,6 +34,7 @@ S="${WORKDIR}/dismine-${PN}-d8d7cb2fad21/"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PV}-disable-ccache.patch"
+	epatch "${FILESDIR}/${PV}-use-portage-split-debug.patch"
 	epatch_user
 }
 
@@ -42,8 +43,8 @@ src_configure() {
 }
 
 src_install() {
-	dolib.so src/libs/qmuparser/bin/libqmuparser.so{,.2,.2.2,.2.2.6}
-	dolib.so src/libs/vpropertyexplorer/bin/libvpropertyexplorer.so{,.1,.1.0,.1.0.0}
+	dolib.so src/libs/qmuparser/bin/libqmuparser.so*
+	dolib.so src/libs/vpropertyexplorer/bin/libvpropertyexplorer.so*
 
 	dobin src/app/bin/valentina
 
