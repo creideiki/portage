@@ -26,7 +26,7 @@ DEPEND="
 "
 
 RDEPEND="
-    ${DEPEND}
+	${DEPEND}
 	app-text/poppler
 "
 
