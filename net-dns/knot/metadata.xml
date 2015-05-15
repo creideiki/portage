@@ -21,8 +21,5 @@
                 timers for slave zones on disk, making the timers
                 persist across server restarts.
 		</flag>
-		<flag name="system-lmdb">Use the system copy of
-		dev-db/lmdb instead of the included one.
-		</flag>
 	</use>
 </pkgmetadata>
