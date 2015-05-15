@@ -13,12 +13,13 @@ SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug doc caps +fastparser idn lmdb systemd"
+IUSE="debug dnstap doc caps +fastparser idn lmdb systemd"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.1
 	>=dev-libs/userspace-rcu-0.5.4
 	caps? ( >=sys-libs/libcap-ng-0.6.4 )
+	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )
 	idn? ( net-dns/libidn )
 	lmdb? ( dev-db/lmdb )
 	systemd? ( sys-apps/systemd )
@@ -42,8 +43,9 @@ src_configure() {
 		--with-storage="${EPREFIX}/var/lib/${PN}" \
 		--with-rundir="${EPREFIX}/var/run/${PN}" \
 		$(use_enable fastparser) \
-		$(use_enable debug debug server,zones,xfr,packet,dname,rr,ns,hash,compiler) \
+		$(use_enable debug debug server,zones,xfr,packet,rr,ns,loader,dnssec) \
 		$(use_enable debug debuglevel details) \
+		$(use_enable dnstap) \
 		$(use_enable lmdb) \
 		$(use_enable systemd) \
 		$(use_with idn libidn)

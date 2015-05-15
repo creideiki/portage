@@ -13,16 +13,16 @@ SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug dnstap doc caps +fastparser idn +system-lmdb systemd"
+IUSE="debug dnstap doc caps +fastparser idn systemd"
 
 RDEPEND="
 	>=net-libs/gnutls-3.0
 	>=dev-libs/jansson-2.3
+	dev-db/lmdb
 	>=dev-libs/userspace-rcu-0.5.4
 	caps? ( >=sys-libs/libcap-ng-0.6.4 )
 	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )
 	idn? ( net-dns/libidn )
-	system-lmdb? ( dev-db/lmdb )
 	systemd? ( sys-apps/systemd )
 "
 
@@ -39,21 +39,17 @@ src_prepare() {
 }
 
 src_configure() {
-	my_conf="
+	econf \
 		--with-storage="${EPREFIX}/var/lib/${PN}" \
 		--with-rundir="${EPREFIX}/var/run/${PN}" \
+		--with-lmdb \
 		$(use_enable fastparser) \
 		$(use_enable debug debug server,zones,ns,loader,dnssec) \
 		$(use_enable debug debuglevel details) \
 		$(use_enable dnstap) \
 		$(use_enable doc documentation) \
 		$(use_with idn libidn) \
-        $(use_with system-lmdb lmdb)"
-
-	use systemd && my_conf+=" --enable-systemd=yes"
-	use systemd || my_conf+=" --enable-systemd=no"
-
-	econf ${my_conf}
+        $(usex systemd --enable-systemd=yes --enable-systemd=no)
 }
 
 src_compile() {
