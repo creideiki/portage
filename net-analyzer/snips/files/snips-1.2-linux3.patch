@@ -7,7 +7,7 @@ Index: snips-1.2/Configure
  		PING="/bin/ping"
  		;; 
 -  LINUX20|Linux\ 2*)
-+  LINUX20|Linux\ [23]*)
++  LINUX20|Linux\ [234]*)
  		OS_CFLAGS="-DLINUX2";
  		OS_LIBS="${LIBRESOLV}"
  		if [ -f /usr/lib/libgdbm.so ]; then
@@ -20,7 +20,7 @@ Index: snips-1.2/utility/snipsprog.init
      # Finally try to extract it from ps depending on the OS
      case "`uname -s -r`" in
 -	LINUX20|Linux\ 2*)
-+	LINUX20|Linux\ [23]*)
++	LINUX20|Linux\ [234]*)
  	    ps auxw | awk 'BEGIN { prog=ARGV[1]; dir=ARGV[2]; ARGC=1 } 
  		       { if ((prog == $11) || (("(" prog ")") == $11) ||
  			    ((prog ":") == $11) || ((dir "/" prog) == $11))
