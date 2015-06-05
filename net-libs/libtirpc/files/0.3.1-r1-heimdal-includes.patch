@@ -1,0 +1,38 @@
+Whoops, I forgot to include gssapi.h if gssapi_ext.h does not exist.
+Karl, can you try this and let us know what else is missing?
+
+ configure.ac       |    2 +-
+ src/svc_auth_gss.c |    4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index f46daf7..661cd95 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -54,7 +54,7 @@ AC_CONFIG_HEADERS([config.h])
+ AC_PROG_LIBTOOL
+ AC_HEADER_DIRENT
+ AC_PREFIX_DEFAULT(/usr)
+-AC_CHECK_HEADERS([arpa/inet.h fcntl.h libintl.h limits.h locale.h netdb.h netinet/in.h stddef.h stdint.h stdlib.h string.h sys/ioctl.h sys/param.h sys/socket.h sys/time.h syslog.h unistd.h features.h])
++AC_CHECK_HEADERS([arpa/inet.h fcntl.h libintl.h limits.h locale.h netdb.h netinet/in.h stddef.h stdint.h stdlib.h string.h sys/ioctl.h sys/param.h sys/socket.h sys/time.h syslog.h unistd.h features.h gssapi/gssapi_ext.h])
+ AC_CHECK_LIB([pthread], [pthread_create])
+ AC_CHECK_FUNCS([getrpcbyname getrpcbynumber setrpcent endrpcent getrpcent])
+ 
+diff --git a/src/svc_auth_gss.c b/src/svc_auth_gss.c
+index e57995d..b2adb98 100644
+--- a/src/svc_auth_gss.c
++++ b/src/svc_auth_gss.c
+@@ -48,7 +48,11 @@
+ #include <rpc/svc_auth_gss.h>
+ #include <rpc/rpcsec_gss.h>
+ 
++#ifdef HAVE_GSSAPI_GSSAPI_EXT_H
+ #include <gssapi/gssapi_ext.h>
++#else
++#include <gssapi/gssapi.h>
++#endif
+ 
+ #include <reentrant.h>
+ 
+
+
