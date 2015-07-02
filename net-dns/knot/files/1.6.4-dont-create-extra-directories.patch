@@ -1,0 +1,15 @@
+--- src/Makefile.in.orig	2015-06-16 10:55:10.000000000 +0200
++++ src/Makefile.in	2015-07-02 13:32:04.889916719 +0200
+@@ -2714,12 +2714,6 @@
+ 	uninstall-sbinPROGRAMS
+ 
+ 
+-# Create storage and run-time directories
+-install-data-hook:
+-	$(INSTALL) -d $(DESTDIR)/@config_dir@
+-	$(INSTALL) -d $(DESTDIR)/@run_dir@
+-	$(INSTALL) -d $(DESTDIR)/@storage_dir@
+-
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
