@@ -1,0 +1,8 @@
+#!/bin/env python
+#
+# Print packages that will be installed by "emerge --resume".
+
+import portage
+
+for operation in portage.mtimedb["resume"]["mergelist"]:
+   print "=%s" % operation[2]
