@@ -11,13 +11,17 @@ from argparse import ArgumentParser
 parser = ArgumentParser(
    description='Print packages that will be installed by "emerge --resume".')
 parser.add_argument("-s", "--strip-version", help="strip version numbers from package list", action="store_true", default=False)
+parser.add_argument("-b", "--backup", help="show the backup resume list", action="store_true", default=False)
 args = parser.parse_args()
 
 if args.strip_version:
    from gentoolkit.atom import Atom
 
 try:
-   resume = mtimedb["resume"]
+   if args.backup:
+      resume = mtimedb["resume_backup"]
+   else:
+      resume = mtimedb["resume"]
 except KeyError:
    print("No emerge operation to resume", file=stderr)
    exit(1)
