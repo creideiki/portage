@@ -2,7 +2,29 @@
 #
 # Print packages that will be installed by "emerge --resume".
 
-import portage
+from __future__ import print_function
 
-for operation in portage.mtimedb["resume"]["mergelist"]:
-   print "=%s" % operation[2]
+import portage
+from sys import exit, stderr
+import argparse
+
+parser = argparse.ArgumentParser(
+   description='Print packages that will be installed by "emerge --resume".')
+parser.add_argument("-s", "--strip-version", help="strip version numbers from package list", action="store_true", default=False)
+args = parser.parse_args()
+
+if args.strip_version:
+   from gentoolkit.atom import Atom
+
+try:
+   resume = portage.mtimedb["resume"]
+except KeyError:
+   print("No emerge operation to resume", file=sys.stderr)
+   sys.exit(1)
+
+for operation in resume["mergelist"]:
+   atom_string = "=%s" % operation[2]
+   if args.strip_version:
+      print("%s" % Atom(atom_string).cp)
+   else:
+      print(atom_string)

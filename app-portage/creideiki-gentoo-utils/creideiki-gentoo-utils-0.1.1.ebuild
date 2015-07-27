@@ -14,7 +14,8 @@ KEYWORDS="~amd64"
 IUSE="+cron"
 
 DEPEND="
-	cron? ( virtual/cron net-misc/rsync app-portage/gentoolkit )
+	app-portage/gentoolkit
+	cron? ( virtual/cron net-misc/rsync )
 "
 
 src_unpack() {
