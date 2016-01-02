@@ -1,0 +1,98 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+EAPI=5
+
+DESCRIPTION="Metapackage for Creideiki's standard Gentoo install (X programs)"
+HOMEPAGE="https://github.com/creideiki/portage"
+SRC_URI=""
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64"
+
+DEPEND="
+	app-admin/keepassx
+	app-cdr/k3b:4
+	app-emulation/qemu
+	app-emulation/wine
+	app-office/gnucash
+	app-office/libreoffice
+	dev-util/kdevelop
+	games-util/steam-client-meta
+	kde-apps/dolphin:4
+	kde-apps/drkonqi:4
+	kde-apps/gwenview:4
+	kde-apps/kcalc:4
+	kde-apps/kcolorchooser:4
+	kde-apps/kcontrol:4
+	kde-apps/kdeartwork-desktopthemes:4
+	kde-apps/kdebase-runtime-meta:4
+	kde-apps/kgpg:4
+	kde-apps/kmix:4
+	kde-apps/kompare:4
+	kde-apps/konqueror:4
+	kde-apps/konsole:4
+	kde-apps/kpat:4
+	kde-apps/krdc:4
+	kde-apps/okteta:4
+	kde-apps/okular:4
+	kde-base/kdebase-startkde:4
+	kde-base/kdeplasma-addons:4
+	kde-base/kdm:4
+	kde-base/kleopatra:4
+	kde-base/kmail:4
+	kde-base/kmenuedit:4
+	kde-base/kscreensaver:4
+	kde-base/ksysguard:4
+	kde-base/kwin:4
+	kde-base/powerdevil:4
+	kde-misc/kde-gtk-config:4
+	kde-misc/kdiff3:4
+	kde-misc/krusader:4
+	kde-misc/skanlite:4
+	kde-misc/tellico:4
+	kde-misc/wacomtablet:4
+	media-fonts/corefonts
+	media-fonts/symbola
+	media-fonts/ttf-bitstream-vera
+	media-gfx/digikam
+	media-gfx/gimp
+	media-gfx/graphicsmagick
+	media-gfx/hugin
+	media-gfx/inkscape
+	media-gfx/luminance-hdr
+	media-sound/amarok:4
+	media-sound/audacity
+	media-sound/easytag
+	media-sound/sidplay
+	media-video/mpv
+	media-video/xine-ui
+	net-analyzer/nmapsi
+	net-analyzer/wireshark
+	net-im/psi
+	sci-geosciences/josm
+	sci-mathematics/qtoctave
+	sci-visualization/gnuplot
+	www-client/chromium-ephemeral
+	www-client/firefox
+	www-client/torbrowser-launcher
+	www-plugins/freshplayerplugin
+	x11-apps/mesa-progs
+	x11-apps/xbacklight
+	x11-apps/xdpyinfo
+	x11-apps/xev
+	x11-apps/xgamma
+	x11-apps/xinput
+	x11-apps/xkill
+	x11-apps/xlsatoms
+	x11-apps/xlsclients
+	x11-apps/xlsfonts
+	x11-apps/xwininfo
+	x11-base/xorg-server
+	x11-misc/driconf
+	x11-misc/wmctrl
+	x11-misc/xfe
+	x11-themes/oxygen-gtk
+"
