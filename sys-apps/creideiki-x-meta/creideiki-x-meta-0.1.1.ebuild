@@ -24,12 +24,15 @@ DEPEND="
 	kde-apps/dolphin:4
 	kde-apps/drkonqi:4
 	kde-apps/gwenview:4
+	kde-apps/kalgebra:4
 	kde-apps/kcalc:4
 	kde-apps/kcolorchooser:4
 	kde-apps/kcontrol:4
 	kde-apps/kdeartwork-desktopthemes:4
 	kde-apps/kdebase-runtime-meta:4
 	kde-apps/kgpg:4
+	kde-apps/kleopatra:4
+	kde-apps/kmail:4
 	kde-apps/kmix:4
 	kde-apps/kompare:4
 	kde-apps/konqueror:4
@@ -41,8 +44,6 @@ DEPEND="
 	kde-base/kdebase-startkde:4
 	kde-base/kdeplasma-addons:4
 	kde-base/kdm:4
-	kde-base/kleopatra:4
-	kde-base/kmail:4
 	kde-base/kmenuedit:4
 	kde-base/kscreensaver:4
 	kde-base/ksysguard:4
