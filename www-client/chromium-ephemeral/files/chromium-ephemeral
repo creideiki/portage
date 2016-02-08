@@ -2,6 +2,11 @@
 
 DIR="${TMPDIR:-/tmp}"
 
+if [ -z "$DIR" -o ! -d "$DIR" -o ! -w "$DIR" ];
+then
+    DIR=/tmp
+fi
+
 cd "$DIR"
 
 PROFILE=`mktemp --directory chromium.XXXXXXXXXX`
