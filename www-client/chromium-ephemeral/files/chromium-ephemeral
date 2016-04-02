@@ -17,7 +17,7 @@ then
     exit 1
 fi
 
-chromium --user-data-dir="$PROFILE" --incognito "$@"
+firejail chromium --user-data-dir="$PROFILE" --incognito "$@"
 
 cd "$DIR"
 rm -r "$PROFILE"

@@ -13,6 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
+	sys-apps/firejail
 	www-client/chromium
 "
 
