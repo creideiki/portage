@@ -4,3 +4,4 @@
 glsa-check --quiet --nocolor --list affected
 eclean --nocolor --quiet --time-limit=1m packages
 eclean --nocolor --quiet --deep distfiles
+fstrim --all --verbose
