@@ -54,7 +54,6 @@ DEPEND="
 	media-fonts/corefonts
 	media-fonts/symbola
 	media-fonts/ttf-bitstream-vera
-	media-gfx/digikam:4
 	media-gfx/gimp
 	media-gfx/graphicsmagick
 	media-gfx/hugin
