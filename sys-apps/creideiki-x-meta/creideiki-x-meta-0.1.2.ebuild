@@ -51,7 +51,6 @@ DEPEND="
 	kde-plasma/kde-gtk-config:4
 	kde-misc/kdiff3:4
 	kde-misc/krusader:4
-	kde-misc/skanlite:4
 	kde-misc/tellico:4
 	kde-misc/wacomtablet:4
 	media-fonts/corefonts
