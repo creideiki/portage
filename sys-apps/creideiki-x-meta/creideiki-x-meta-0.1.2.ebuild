@@ -14,7 +14,7 @@ KEYWORDS="~amd64"
 
 DEPEND="
 	app-admin/keepassx
-	app-cdr/k3b:4
+	kde-apps/k3b:4
 	app-emulation/qemu
 	app-emulation/wine
 	app-office/gnucash
@@ -35,21 +35,20 @@ DEPEND="
 	kde-apps/kmail:4
 	kde-apps/kmix:4
 	kde-apps/kompare:4
-	kde-apps/konqueror:4
 	kde-apps/konsole:4
 	kde-apps/kpat:4
 	kde-apps/krdc:4
 	kde-apps/okteta:4
 	kde-apps/okular:4
-	kde-base/kdebase-startkde:4
-	kde-base/kdeplasma-addons:4
-	kde-base/kdm:4
-	kde-base/kmenuedit:4
-	kde-base/kscreensaver:4
-	kde-base/ksysguard:4
-	kde-base/kwin:4
-	kde-base/powerdevil:4
-	kde-misc/kde-gtk-config:4
+	kde-plasma/kdebase-startkde:4
+	kde-plasma/kdeplasma-addons:4
+	kde-plasma/kdm:4
+	kde-plasma/kmenuedit:4
+	kde-plasma/kscreensaver:4
+	kde-plasma/ksysguard:4
+	kde-plasma/kwin:4
+	kde-plasma/powerdevil:4
+	kde-plasma/kde-gtk-config:4
 	kde-misc/kdiff3:4
 	kde-misc/krusader:4
 	kde-misc/skanlite:4
@@ -58,7 +57,7 @@ DEPEND="
 	media-fonts/corefonts
 	media-fonts/symbola
 	media-fonts/ttf-bitstream-vera
-	media-gfx/digikam
+	media-gfx/digikam:4
 	media-gfx/gimp
 	media-gfx/graphicsmagick
 	media-gfx/hugin
