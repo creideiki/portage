@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	app-admin/keepassx
+	app-admin/keepassxc
 	kde-apps/k3b:4
 	app-emulation/qemu
 	app-emulation/wine
