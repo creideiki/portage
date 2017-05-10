@@ -57,6 +57,7 @@ DEPEND="
 	net-analyzer/tcpdump
 	net-analyzer/traceroute
 	net-dns/bind-tools
+	net-fs/sshfs
 	net-misc/curl
 	net-misc/dhcpcd
 	net-misc/keychain
@@ -83,7 +84,6 @@ DEPEND="
 	sys-fs/ntfs3g
 	sys-fs/simple-mtpfs
 	sys-fs/squashfs-tools
-	sys-fs/sshfs-fuse
 	sys-fs/sysfsutils
 	sys-libs/gpm
 	sys-power/cpupower
