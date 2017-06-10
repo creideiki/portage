@@ -20,7 +20,7 @@ DEPEND="
 	app-admin/metalog
 	app-admin/sysstat
 	app-arch/unrar
-	app-cdr/cdrkit
+	app-cdr/cdrtools
 	app-cdr/dvd+rw-tools
 	app-crypt/gnupg
 	app-crypt/rotix
