@@ -19,7 +19,6 @@ DEPEND="
 	app-emulation/wine
 	app-office/gnucash
 	app-office/libreoffice
-	dev-util/kdevelop:4
 	games-util/steam-client-meta
 	kde-apps/dolphin:4
 	kde-apps/drkonqi:4
