@@ -51,8 +51,8 @@ DEPEND="
 	kde-misc/kdiff3:4
 	kde-misc/tellico:4
 	media-fonts/corefonts
+	media-fonts/dejavu
 	media-fonts/symbola
-	media-fonts/ttf-bitstream-vera
 	media-gfx/gimp
 	media-gfx/graphicsmagick
 	media-gfx/hugin
