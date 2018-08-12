@@ -73,7 +73,6 @@ DEPEND="
 	sys-apps/iproute2
 	sys-apps/lm_sensors
 	sys-apps/lshw
-	sys-apps/microcode-ctl
 	sys-apps/mlocate
 	sys-apps/smartmontools
 	sys-apps/usbutils
