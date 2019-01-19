@@ -1,6 +1,6 @@
 #!/bin/sh
 
-( emaint sync -a && eix-update ) > /dev/null 2> /dev/null
+( emaint sync -a ; eix-update ) > /dev/null 2> /dev/null
 glsa-check --quiet --nocolor --list affected
 eclean --nocolor --quiet --time-limit=1m packages
 eclean --nocolor --quiet --deep distfiles
