@@ -18,7 +18,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-qt/qtgui
+RDEPEND="
+	dev-qt/qtcore
+	dev-qt/qtdeclarative
+	dev-qt/qtgui
+	dev-qt/qtquickcontrols2
 	pulseaudio? ( media-sound/pulseaudio )
 	!pulseaudio? ( media-sound/apulse )
 	dev-libs/openssl:1.0.0"
