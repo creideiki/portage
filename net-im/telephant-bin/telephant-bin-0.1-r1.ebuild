@@ -20,7 +20,8 @@ KEYWORDS="~amd64"
 
 RDEPEND="dev-qt/qtgui
 	pulseaudio? ( media-sound/pulseaudio )
-	!pulseaudio? ( media-sound/apulse )"
+	!pulseaudio? ( media-sound/apulse )
+    dev-libs/openssl:1.0.0"
 
 QA_PREBUILT="usr/bin/telephant"
 
