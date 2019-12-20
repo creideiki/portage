@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Firefox (ephemeral private)
+Type=Application
+Comment=A script for running ephemeral private sessions of Firefox
+Exec=firefox-ephemeral %U
+TryExec=firefox-ephemeral
+Icon=firefox
+Categories=Network;WebBrowser;
