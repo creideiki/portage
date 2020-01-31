@@ -36,8 +36,8 @@ crossbeam-queue-0.1.2
 crossbeam-queue-0.2.0
 crossbeam-utils-0.6.6
 crossbeam-utils-0.7.0
-crossterm-0.14.1
-crossterm_winapi-0.5.1
+crossterm-0.15.0
+crossterm_winapi-0.6.1
 csv-1.1.1
 csv-core-0.1.6
 custom_error-1.7.1
@@ -67,7 +67,7 @@ log-0.4.8
 memchr-2.2.1
 memoffset-0.5.2
 minimad-0.6.3
-mio-0.6.19
+mio-0.6.21
 miow-0.2.1
 net2-0.2.33
 nodrop-0.1.14
@@ -77,6 +77,7 @@ num_cpus-1.11.1
 open-1.3.2
 parking_lot-0.10.0
 parking_lot_core-0.7.0
+pathdiff-0.1.0
 proc-macro2-1.0.6
 quote-1.0.2
 rand_core-0.3.1
@@ -104,7 +105,7 @@ semver-parser-0.7.0
 serde-1.0.102
 serde_derive-1.0.103
 serde_json-1.0.42
-signal-hook-0.1.12
+signal-hook-0.1.13
 signal-hook-registry-1.2.0
 simplelog-0.7.4
 slab-0.4.2
@@ -113,7 +114,7 @@ strsim-0.8.0
 syn-1.0.7
 synstructure-0.12.1
 term-0.6.1
-termimad-0.8.9
+termimad-0.8.12
 textwrap-0.11.0
 thiserror-1.0.4
 thiserror-impl-1.0.4
