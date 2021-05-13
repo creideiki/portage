@@ -47,7 +47,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ "${upgrading}" == "1" ]] ; then
+	if [[ "${upgrading}" != "1" ]] ; then
 		einfo "The admin interface at http://localhost:8080/admin/"
 		einfo "has default username 'admin' and password 'abc123'."
 		einfo "The default stream key is 'abc123'."
