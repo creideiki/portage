@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=(python{3_6,3_7,3_8})
+PYTHON_COMPAT=(python{3_6,3_7,3_8,3_9})
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/certbot/certbot.git"
@@ -23,7 +23,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-CDEPEND=">=dev-python/setuptools-1.0[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/setuptools-39.0.1[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
 	>=app-crypt/certbot-1.1.0[${PYTHON_USEDEP}]
 	>=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
