@@ -6,7 +6,7 @@ EAPI=7
 inherit go-module golang-build
 
 DESCRIPTION="A self-hosted live video and web chat server"
-HOMEPAGE="https://owncast.online"
+HOMEPAGE="https://owncast.online/ https://github.com/owncast/owncast"
 
 LICENSE="MIT Apache-2.0 ISC BSD"
 SLOT="0"
@@ -138,49 +138,42 @@ EGO_SUM=(
 
 go-module_set_globals
 
-SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}-linux-64bit.zip
+SRC_URI="https://github.com/owncast/owncast/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/owncast/owncast/releases/download/v${PV}/${P}-linux-64bit.zip
 	${EGO_SUM_SRC_URI}"
 
 src_unpack() {
 	go-module_src_unpack
 
-	cd "${S}"
-	cp webroot/js/web_modules/tailwindcss/dist/tailwind.min.css "${P}"/webroot/js/web_modules/tailwindcss/dist/tailwind.min.css
+	cp "${WORKDIR}"/webroot/js/web_modules/tailwindcss/dist/tailwind.min.css "${S}"/webroot/js/web_modules/tailwindcss/dist/tailwind.min.css || die
 }
 
 src_compile() {
 	go build -v -work -x -ldflags \
 	   "-s -w -X main.BuildVersion=${PV} -X main.BuildPlatform=gentoo" \
-	   -o "${PN}" \
-	   "github.com/${PN}/${PN}" || die
+	   -o ${PN} \
+	   github.com/${PN}/${PN} || die
 }
 
 src_install() {
-	dobin "${PN}"
+	dobin ${PN}
 
 	dodoc README.md
 
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 
 	diropts -m 0755 -o owncast -g owncast
 	insopts -m 0644 -o owncast -g owncast
 
-	dodir "/var/lib/${PN}"
-	insinto "/var/lib/${PN}"
+	dodir /var/lib/${PN}
+	insinto /var/lib/${PN}
 	doins -r static webroot
-}
-
-pkg_preinst() {
-	if has_version "${CATEGORY}/${PN}" ; then
-		upgrading=1
-	fi
 }
 
 pkg_postinst() {
 	go-module_pkg_postinst
 
-	if [[ "${upgrading}" != "1" ]] ; then
+	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
 		einfo "The admin interface at http://localhost:8080/admin/"
 		einfo "has default username 'admin' and password 'abc123'."
 		einfo "The default stream key is 'abc123'."
