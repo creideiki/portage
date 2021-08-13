@@ -145,6 +145,11 @@ SRC_URI="https://github.com/owncast/owncast/archive/refs/tags/v${PV}.tar.gz -> $
 src_unpack() {
 	go-module_src_unpack
 
+	# go-module_src_unpack unpacked both the source and the binary
+	# package. This places the binary package files in the wrong
+	# place, but that's hopefully survivable. We need the binary
+	# package to get the minified CSS file, which is generated using
+	# NPM by upstream.
 	cp "${WORKDIR}"/webroot/js/web_modules/tailwindcss/dist/tailwind.min.css "${S}"/webroot/js/web_modules/tailwindcss/dist/tailwind.min.css || die
 }
 
@@ -165,7 +170,6 @@ src_install() {
 	diropts -m 0755 -o owncast -g owncast
 	insopts -m 0644 -o owncast -g owncast
 
-	dodir /var/lib/${PN}
 	insinto /var/lib/${PN}
 	doins -r static webroot
 }
