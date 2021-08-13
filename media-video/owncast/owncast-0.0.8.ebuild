@@ -193,8 +193,7 @@ pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
 		einfo "The admin interface at http://localhost:8080/admin/"
 		einfo "has default username 'admin' and password 'abc123'."
-		einfo "The default stream key is 'abc123'."
 	fi
 
-	einfo "Hardware accelerated transcoding requires support in media-video/ffmpeg, see ${HOMEPAGE}/docs/codecs/"
+	einfo "Hardware accelerated transcoding requires support in media-video/ffmpeg, see https://owncast.online/docs/codecs/"
 }
