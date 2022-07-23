@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Chromium (ephemeral incognito)
-Type=Application
-Comment=A script for running ephemeral incognito sessions of Chromium
-Exec=chromium-ephemeral %U
-TryExec=chromium-ephemeral
-Icon=chromium-browser
-Categories=Network;WebBrowser;
