@@ -37,10 +37,10 @@ src_unpack() {
 }
 
 src_compile() {
-	go build -v -work -x \
-	   -ldflags "-s -w -X github.com/${PN}/${PN}/config.VersionNumber=${PV} -X github.com/${PN}/${PN}/config.BuildPlatform=gentoo" \
-	   -o ${PN} \
-	   github.com/${PN}/${PN} || die
+	ego build -v -work -x \
+		-ldflags "-s -w -X github.com/${PN}/${PN}/config.VersionNumber=${PV} -X github.com/${PN}/${PN}/config.BuildPlatform=gentoo" \
+		-o ${PN} \
+		github.com/${PN}/${PN} || die
 }
 
 src_install() {
