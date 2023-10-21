@@ -17,7 +17,7 @@ then
     exit 1
 fi
 
-firejail --ignore=seccomp '--seccomp=!kcmp,!chroot' --whitelist="$DIR"/"$PROFILE" firefox --profile "$DIR"/"$PROFILE" --no-remote --private-window "$@"
+firejail --whitelist="$DIR"/"$PROFILE" firefox --profile "$DIR"/"$PROFILE" --no-remote --private-window "$@"
 
 cd "$DIR"
 rm -r "$PROFILE"
