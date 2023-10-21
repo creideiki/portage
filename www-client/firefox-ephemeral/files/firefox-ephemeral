@@ -17,6 +17,8 @@ then
     exit 1
 fi
 
+export TZ=$(cat /etc/timezone)
+
 firejail --whitelist="$DIR"/"$PROFILE" firefox --profile "$DIR"/"$PROFILE" --no-remote --private-window "$@"
 
 cd "$DIR"
