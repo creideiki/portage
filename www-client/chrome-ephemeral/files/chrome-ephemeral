@@ -1,0 +1,35 @@
+#!/bin/bash
+
+DIR="${TMPDIR:-/tmp}"
+
+if [ -z "$DIR" -o ! -d "$DIR" -o ! -w "$DIR" ];
+then
+    DIR=/tmp
+fi
+
+cd "$DIR"
+
+PROFILE=`mktemp --directory chrome.XXXXXXXXXX`
+
+if [ -z "$PROFILE" -o ! -d "$PROFILE" ];
+then
+    echo "mktemp failed"
+    exit 1
+fi
+
+export TZ=$(cat /etc/timezone)
+
+firejail google-chrome-stable --user-data-dir="$PROFILE" --incognito "$@"
+
+cd "$DIR"
+rm -r "$PROFILE"
+
+if [ -d "$PROFILE" ];
+then
+    echo "Profile directory $DIR/$PROFILE still exists."
+    echo "This may be because we failed to remove it,"
+    echo "or because another chrome-ephemeral session"
+    echo "grabbed it after we removed it."
+    echo "Please investigate."
+    exit 2
+fi

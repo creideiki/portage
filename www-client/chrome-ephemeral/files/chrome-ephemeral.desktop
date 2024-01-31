@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Chrome (ephemeral incognito)
+Type=Application
+Comment=A script for running ephemeral incognito sessions of Chrome
+Exec=chrome-ephemeral %U
+TryExec=chrome-ephemeral
+Icon=google-chrome
+Categories=Network;WebBrowser;
