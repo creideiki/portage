@@ -1,12 +1,10 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="A script for running ephemeral private sessions of Firefox"
 HOMEPAGE="https://github.com/creideiki/portage"
-SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,7 +15,7 @@ DEPEND="
 	www-client/firefox
 "
 
-inherit eutils
+inherit desktop
 
 src_unpack() {
 	# Portage gets upset if $S doesn't exist.
