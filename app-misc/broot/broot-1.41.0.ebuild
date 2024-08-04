@@ -125,8 +125,8 @@ jobserver@0.1.31
 jpeg-decoder@0.3.1
 js-sys@0.3.69
 kurbo@0.9.5
-lazy-regex@3.1.0
-lazy-regex-proc_macros@3.1.0
+lazy-regex@3.2.0
+lazy-regex-proc_macros@3.2.0
 lazy_static@1.5.0
 lebe@0.5.2
 lfs-core@0.11.2
@@ -220,7 +220,7 @@ smallvec@1.13.2
 snafu@0.7.5
 snafu-derive@0.7.5
 spin@0.9.8
-splitty@1.0.1
+splitty@1.0.2
 str-buf@1.0.6
 strict@0.1.4
 strict@0.2.0
