@@ -343,7 +343,7 @@ RDEPEND="
 	X? ( x11-libs/libxcb:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND=">=virtual/rust-1.65"
+BDEPEND=">=virtual/rust-1.76"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
