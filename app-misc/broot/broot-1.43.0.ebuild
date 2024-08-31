@@ -89,6 +89,7 @@ fastrand@2.1.0
 fdeflate@0.3.4
 file-size@1.0.3
 flate2@1.0.31
+flex-grow@0.1.0
 float-cmp@0.9.0
 flume@0.11.0
 fnv@1.0.7
@@ -125,8 +126,8 @@ jobserver@0.1.32
 jpeg-decoder@0.3.1
 js-sys@0.3.70
 kurbo@0.9.5
-lazy-regex@3.2.0
-lazy-regex-proc_macros@3.2.0
+lazy-regex@3.3.0
+lazy-regex-proc_macros@3.3.0
 lazy_static@1.5.0
 lebe@0.5.2
 lfs-core@0.11.2
