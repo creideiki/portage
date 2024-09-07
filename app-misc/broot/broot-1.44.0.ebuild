@@ -25,7 +25,7 @@ autocfg@1.3.0
 base64@0.13.1
 base64@0.21.7
 base64@0.22.1
-bet@1.0.3
+bet@1.0.4
 bincode@1.3.3
 bit_field@0.10.2
 bitflags@1.3.2
