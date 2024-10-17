@@ -131,7 +131,7 @@ lazy-regex-proc_macros@3.3.0
 lazy_static@1.5.0
 lebe@0.5.2
 lfs-core@0.11.2
-libc@0.2.155
+libc@0.2.158
 libgit2-sys@0.17.0+1.8.1
 libredox@0.1.3
 libsqlite3-sys@0.28.0
@@ -144,13 +144,10 @@ malloc_buf@0.0.6
 memchr@2.7.4
 memmap2@0.8.0
 memmap2@0.9.4
-memoffset@0.6.5
 memoffset@0.7.1
 minimad@0.13.1
 miniz_oxide@0.7.4
-mio@0.8.11
 mio@1.0.2
-nix@0.22.3
 nix@0.26.4
 nix@0.29.0
 normpath@1.3.0
@@ -201,7 +198,7 @@ roxmltree@0.18.1
 roxmltree@0.20.0
 rusqlite@0.31.0
 rustc-hash@1.1.0
-rustix@0.38.34
+rustix@0.38.37
 rustybuzz@0.10.0
 ryu@1.0.18
 same-file@1.0.6
@@ -235,9 +232,9 @@ syn@1.0.109
 syn@2.0.74
 syntect-no-panic@4.6.1
 tempfile@3.12.0
-termimad@0.30.0
+termimad@0.30.1
 terminal-clipboard@0.4.1
-terminal-light@1.5.0
+terminal-light@1.7.0
 termux-clipboard@0.1.0
 thiserror@1.0.63
 thiserror-impl@1.0.63
@@ -323,8 +320,7 @@ x11rb@0.12.0
 x11rb-protocol@0.12.0
 xmlparser@0.13.6
 xmlwriter@0.1.0
-xterm-query@0.3.0
-xterm-query@0.4.1
+xterm-query@0.5.0
 yaml-rust@0.4.5
 zerocopy@0.7.35
 zerocopy-derive@0.7.35
