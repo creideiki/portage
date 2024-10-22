@@ -7,6 +7,7 @@ CRATES="
 adler@1.0.2
 ahash@0.8.11
 aho-corasick@1.1.3
+allocator-api2@0.2.18
 android-tzdata@0.1.1
 android_system_properties@0.1.5
 ansi_colours@1.2.3
@@ -47,7 +48,7 @@ clap_complete@4.5.16
 clap_derive@4.5.13
 clap_lex@0.7.2
 clap_mangen@0.2.23
-cli-log@2.0.0
+cli-log@2.1.0
 clipboard-win@4.5.0
 clipboard_macos@0.1.0
 color_quant@1.1.0
@@ -93,6 +94,7 @@ flex-grow@0.1.0
 float-cmp@0.9.0
 flume@0.11.0
 fnv@1.0.7
+foldhash@0.1.3
 fontconfig-parser@0.5.7
 fontdb@0.15.0
 form_urlencoded@1.2.1
@@ -105,6 +107,7 @@ glassbench@0.4.3
 glob@0.3.1
 half@2.4.1
 hashbrown@0.14.5
+hashbrown@0.15.0
 hashlink@0.9.1
 heck@0.4.1
 heck@0.5.0
@@ -140,6 +143,7 @@ linked-hash-map@0.5.6
 linux-raw-sys@0.4.14
 lock_api@0.4.12
 log@0.4.22
+lru@0.12.5
 malloc_buf@0.0.6
 memchr@2.7.4
 memmap2@0.8.0
@@ -197,7 +201,7 @@ roff@0.2.2
 roxmltree@0.18.1
 roxmltree@0.20.0
 rusqlite@0.31.0
-rustc-hash@1.1.0
+rustc-hash@2.0.0
 rustix@0.38.37
 rustybuzz@0.10.0
 ryu@1.0.18
@@ -267,7 +271,7 @@ usvg-parser@0.36.0
 usvg-text-layout@0.36.0
 usvg-tree@0.36.0
 utf8parse@0.2.2
-uzers@0.11.3
+uzers@0.12.1
 vcpkg@0.2.15
 version_check@0.9.5
 walkdir@2.5.0
