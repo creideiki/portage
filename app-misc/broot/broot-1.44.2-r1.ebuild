@@ -331,6 +331,7 @@ zerocopy-derive@0.7.35
 zune-inflate@0.2.54
 "
 
+RUST_MIN_VER="1.77.1"
 inherit bash-completion-r1 cargo
 
 DESCRIPTION="A new way to see and navigate directory trees"
@@ -349,7 +350,6 @@ RDEPEND="
 	X? ( x11-libs/libxcb:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND=">=virtual/rust-1.76"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
