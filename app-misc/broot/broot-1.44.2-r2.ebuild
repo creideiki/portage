@@ -346,6 +346,7 @@ IUSE="X"
 
 RDEPEND="
 	dev-libs/libgit2:=
+	dev-libs/oniguruma
 	sys-libs/zlib
 	X? ( x11-libs/libxcb:= )
 "
@@ -367,6 +368,11 @@ src_prepare() {
 	sed -e "s|#version|${PV}|" \
 		-e "s|#date|${mandate}|" \
 		man/page > "${T}"/${PN}.1 || die
+}
+
+src_compile() {
+	export RUSTONIG_SYSTEM_LIBONIG=1 #943785
+	cargo_src_compile
 }
 
 src_install() {
