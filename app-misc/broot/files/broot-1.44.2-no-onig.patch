@@ -1,0 +1,200 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 55d1c0a..dbd39b5 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -242,6 +242,21 @@ dependencies = [
+  "serde",
+ ]
+ 
++[[package]]
++name = "bit-set"
++version = "0.5.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "0700ddab506f33b20a03b13996eccd309a48e5ff77d0d95926aa0210fb4e95f1"
++dependencies = [
++ "bit-vec",
++]
++
++[[package]]
++name = "bit-vec"
++version = "0.6.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "349f9b6a179ed607305526ca489b34ad0a41aed5f7980fa90eb03160b69598fb"
++
+ [[package]]
+ name = "bit_field"
+ version = "0.10.2"
+@@ -857,6 +872,16 @@ version = "0.1.9"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7360491ce676a36bf9bb3c56c1aa791658183a54d2744120f27285738d90465a"
+ 
++[[package]]
++name = "fancy-regex"
++version = "0.7.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "9d6b8560a05112eb52f04b00e5d3790c0dd75d9d980eb8a122fb23b92a623ccf"
++dependencies = [
++ "bit-set",
++ "regex",
++]
++
+ [[package]]
+ name = "fastrand"
+ version = "2.1.0"
+@@ -1675,28 +1700,6 @@ version = "1.19.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92"
+ 
+-[[package]]
+-name = "onig"
+-version = "6.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8c4b31c8722ad9171c6d77d3557db078cab2bd50afcc9d09c8b315c59df8ca4f"
+-dependencies = [
+- "bitflags 1.3.2",
+- "libc",
+- "once_cell",
+- "onig_sys",
+-]
+-
+-[[package]]
+-name = "onig_sys"
+-version = "69.8.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7b829e3d7e9cc74c7e315ee8edb185bf4190da5acde74afd7fc59c35b1f086e7"
+-dependencies = [
+- "cc",
+- "pkg-config",
+-]
+-
+ [[package]]
+ name = "open"
+ version = "1.7.1"
+@@ -2454,11 +2457,11 @@ checksum = "bee6d840027be11d9fae1432a799c548eaf0332a9a8dbe8526281d55a9600e4f"
+ dependencies = [
+  "bincode",
+  "bitflags 1.3.2",
++ "fancy-regex",
+  "flate2",
+  "fnv",
+  "lazy_static",
+  "once_cell",
+- "onig",
+  "plist",
+  "regex-syntax 0.6.29",
+  "serde",
+diff --git a/Cargo.toml b/Cargo.toml
+index 1b19181..c1aa24f 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -57,7 +57,7 @@ serde = { version = "1.0", features = ["derive"] }
+ smallvec = "1.11" # version 2 is still alpha
+ splitty = "1.0.2"
+ strict = "0.1.4"
+-syntect = { package = "syntect-no-panic", version = "4.6.1" } # see issue #485
++syntect = { package = "syntect-no-panic", version = "4.6.1", default-features = false, features = ["default-fancy"] } # see issues #485 and #956
+ tempfile = "3.2"
+ termimad = "0.31"
+ terminal-clipboard = { version = "0.4.1", optional = true }
+diff --git a/bacon.toml b/bacon.toml
+index 1aaa5fd..6533bcb 100644
+--- a/bacon.toml
++++ b/bacon.toml
+@@ -2,34 +2,37 @@
+ # More info at https://github.com/Canop/bacon
+ 
+ default_job = "check"
++env.CARGO_TERM_COLOR = "always"
+ 
+ [jobs]
+ 
+ [jobs.check-all]
+-command = ["cargo", "check", "--all-targets", "--color", "always"]
++command = ["cargo", "check", "--all-targets"]
+ need_stdout = false
+ watch = ["tests", "benches", "examples"]
+ 
+ [jobs.check]
+ command = [
+ 	"cargo", "check",
+-	"--color", "always",
+ 	"--features", "clipboard kitty-csi-check trash",
+ ]
+ need_stdout = false
+ watch = ["benches"]
+ 
++[jobs.miri]
++command = ["cargo", "+nightly", "miri", "run"]
++need_stdout = true
++
+ [jobs.win]
+ command = ["cross", "build", "--target", "x86_64-pc-windows-gnu", "--release", "--features", "clipboard"]
+ 
+ [jobs.light]
+-command = ["cargo", "check", "--color", "always"]
++command = ["cargo", "check"]
+ need_stdout = false
+ 
+ [jobs.clippy]
+ command = [
+ 	"cargo", "clippy",
+-	"--color", "always",
+ 	"--",
+ 	"-A", "clippy::bool_to_int_with_if",
+ 	"-A", "clippy::collapsible_else_if",
+@@ -51,7 +54,7 @@ command = [
+ need_stdout = false
+ 
+ [jobs.test]
+-command = ["cargo", "test", "--color", "always"]
++command = ["cargo", "test"]
+ need_stdout = true
+ 
+ [keybindings]
+diff --git a/src/display/matched_string.rs b/src/display/matched_string.rs
+index ea8610c..788758d 100644
+--- a/src/display/matched_string.rs
++++ b/src/display/matched_string.rs
+@@ -17,7 +17,7 @@ pub struct MatchedString<'a> {
+     pub align: Alignment,
+ }
+ 
+-impl<'a, 'w> MatchedString<'a> {
++impl<'a> MatchedString<'a> {
+ 
+     pub fn new(
+         name_match: Option<NameMatch>,
+@@ -94,7 +94,7 @@ impl<'a, 'w> MatchedString<'a> {
+         }
+         removed_char_count
+     }
+-    pub fn queue_on<W>(&self, cw: &mut CropWriter<'w, W>) -> Result<(), termimad::Error>
++    pub fn queue_on<W>(&self, cw: &mut CropWriter<'_, W>) -> Result<(), termimad::Error>
+     where
+         W: std::io::Write,
+     {
+diff --git a/src/kitty/image_renderer.rs b/src/kitty/image_renderer.rs
+index db2d8d4..54dad4a 100644
+--- a/src/kitty/image_renderer.rs
++++ b/src/kitty/image_renderer.rs
+@@ -85,7 +85,7 @@ impl<'i> From<&'i DynamicImage> for ImageData<'i> {
+         }
+     }
+ }
+-impl<'i> ImageData<'i> {
++impl ImageData<'_> {
+     fn kitty_format(&self) -> &'static str {
+         match self {
+             Self::RgbaRef(_) => "32",
+diff --git a/src/task_sync.rs b/src/task_sync.rs
+index 928d04d..f56d416 100644
+--- a/src/task_sync.rs
++++ b/src/task_sync.rs
+@@ -60,7 +60,6 @@ impl Dam {
+     /// after the event listener started again. In any case
+     /// using try_compute should be preferred for immediate
+     /// return to the ui thread.
+-
+     pub fn observer(&self) -> DamObserver {
+         DamObserver::from(self)
+     }

@@ -28,6 +28,8 @@ base64@0.21.7
 base64@0.22.1
 bet@1.0.4
 bincode@1.3.3
+bit-set@0.5.3
+bit-vec@0.6.3
 bit_field@0.10.2
 bitflags@1.3.2
 bitflags@2.6.0
@@ -86,6 +88,7 @@ error-code@2.3.1
 exr@1.72.0
 fallible-iterator@0.3.0
 fallible-streaming-iterator@0.1.9
+fancy-regex@0.7.1
 fastrand@2.1.0
 fdeflate@0.3.4
 file-size@1.0.3
@@ -161,8 +164,6 @@ objc@0.2.7
 objc-foundation@0.1.1
 objc_id@0.1.1
 once_cell@1.19.0
-onig@6.4.0
-onig_sys@69.8.1
 open@1.7.1
 opener@0.6.1
 option-ext@0.2.0
@@ -346,13 +347,16 @@ IUSE="X"
 
 RDEPEND="
 	dev-libs/libgit2:=
-	dev-libs/oniguruma
 	sys-libs/zlib
 	X? ( x11-libs/libxcb:= )
 "
 DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-no-onig.patch"
+)
 
 src_configure() {
 	export RUSTFLAGS="-Cstrip=none ${RUSTFLAGS}" #835400
@@ -368,11 +372,6 @@ src_prepare() {
 	sed -e "s|#version|${PV}|" \
 		-e "s|#date|${mandate}|" \
 		man/page > "${T}"/${PN}.1 || die
-}
-
-src_compile() {
-	export RUSTONIG_SYSTEM_LIBONIG=1 #943785
-	cargo_src_compile
 }
 
 src_install() {
