@@ -1,34 +1,38 @@
-#!/bin/env python
+#!/usr/bin/env python
 #
 # Print packages that will be installed by "emerge --resume".
-
-from __future__ import print_function
 
 from portage import mtimedb
 from sys import exit, stderr
 from argparse import ArgumentParser
 
 parser = ArgumentParser(
-   description='Print packages that will be installed by "emerge --resume".')
-parser.add_argument("-s", "--strip-version", help="strip version numbers from package list", action="store_true", default=False)
-parser.add_argument("-b", "--backup", help="show the backup resume list", action="store_true", default=False)
+    description='Print packages that will be installed by "emerge --resume".')
+parser.add_argument("-s", "--strip-version",
+                    help="strip version numbers from package list",
+                    action="store_true",
+                    default=False)
+parser.add_argument("-b", "--backup",
+                    help="show the backup resume list",
+                    action="store_true",
+                    default=False)
 args = parser.parse_args()
 
 if args.strip_version:
-   from gentoolkit.atom import Atom
+    from gentoolkit.atom import Atom
 
 try:
-   if args.backup:
-      resume = mtimedb["resume_backup"]
-   else:
-      resume = mtimedb["resume"]
+    if args.backup:
+        resume = mtimedb["resume_backup"]
+    else:
+        resume = mtimedb["resume"]
 except KeyError:
-   print("No emerge operation to resume", file=stderr)
-   exit(1)
+    print("No emerge operation to resume", file=stderr)
+    exit(1)
 
 for operation in resume["mergelist"]:
-   atom_string = "=%s" % operation[2]
-   if args.strip_version:
-      print("%s" % Atom(atom_string).cp)
-   else:
-      print(atom_string)
+    atom_string = f"={operation[2]}"
+    if args.strip_version:
+        print(Atom(atom_string).cp)
+    else:
+        print(atom_string)
