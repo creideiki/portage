@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,14 +40,14 @@ bitflags@1.3.2
 bitflags@2.6.0
 bitstream-io@2.6.0
 block2@0.5.1
-broot@1.44.3
+broot@1.44.4
 bstr@1.11.1
 built@0.7.5
 bumpalo@3.16.0
 bytemuck@1.21.0
 byteorder@1.5.0
 byteorder-lite@0.1.0
-cc@1.2.5
+cc@1.2.6
 cfg-expr@0.15.8
 cfg-if@1.0.0
 cfg_aliases@0.2.1
@@ -99,7 +99,7 @@ error-code@2.3.1
 exr@1.73.0
 fallible-iterator@0.3.0
 fallible-streaming-iterator@0.1.9
-fancy-regex@0.7.1
+fancy-regex@0.11.0
 fastrand@2.3.0
 fdeflate@0.3.7
 file-size@1.0.3
@@ -117,7 +117,7 @@ gif@0.12.0
 gif@0.13.1
 git2@0.19.0
 glassbench@0.4.3
-glob@0.3.1
+glob@0.3.2
 half@2.4.1
 hashbrown@0.14.5
 hashbrown@0.15.2
@@ -156,8 +156,8 @@ jobserver@0.1.32
 jpeg-decoder@0.3.1
 js-sys@0.3.76
 kurbo@0.9.5
-lazy-regex@3.3.0
-lazy-regex-proc_macros@3.3.0
+lazy-regex@3.4.1
+lazy-regex-proc_macros@3.4.1
 lazy_static@1.5.0
 lebe@0.5.2
 lfs-core@0.11.2
@@ -245,7 +245,6 @@ redox_syscall@0.5.8
 redox_users@0.4.6
 regex@1.11.1
 regex-automata@0.4.9
-regex-syntax@0.6.29
 regex-syntax@0.8.5
 resvg@0.36.0
 rgb@0.8.50
@@ -261,8 +260,8 @@ ryu@1.0.18
 same-file@1.0.6
 scopeguard@1.2.0
 secular@1.0.1
-serde@1.0.216
-serde_derive@1.0.216
+serde@1.0.217
+serde_derive@1.0.217
 serde_json@1.0.134
 serde_spanned@0.6.8
 shlex@1.3.0
@@ -287,9 +286,9 @@ strsim@0.11.1
 svg@0.16.0
 svgtypes@0.12.0
 syn@1.0.109
-syn@2.0.91
+syn@2.0.93
 synstructure@0.13.1
-syntect-no-panic@4.6.1
+syntect-5-no-panic@5.2.0
 system-deps@6.2.2
 target-lexicon@0.12.16
 tempfile@3.14.0
@@ -381,7 +380,7 @@ windows_x86_64_gnullvm@0.52.6
 windows_x86_64_msvc@0.42.2
 windows_x86_64_msvc@0.48.5
 windows_x86_64_msvc@0.52.6
-winnow@0.6.20
+winnow@0.6.21
 write16@1.0.0
 writeable@0.5.5
 x11-clipboard@0.8.1
