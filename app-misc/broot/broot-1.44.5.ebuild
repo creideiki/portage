@@ -404,7 +404,7 @@ zune-jpeg@0.4.14
 "
 
 RUST_MIN_VER="1.79.0"
-inherit bash-completion-r1 cargo
+inherit cargo shell-completion
 
 DESCRIPTION="A new way to see and navigate directory trees"
 HOMEPAGE="https://dystroy.org/broot/ https://github.com/Canop/broot"
@@ -418,20 +418,12 @@ IUSE="X"
 
 RDEPEND="
 	dev-libs/libgit2:=
-	dev-libs/oniguruma
 	sys-libs/zlib
 	X? ( x11-libs/libxcb:= )
 "
 DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
-
-src_configure() {
-	export RUSTFLAGS="-Cstrip=none ${RUSTFLAGS}" #835400
-	local myfeatures=( $(usev X clipboard) trash )
-
-	cargo_src_configure --no-default-features
-}
 
 src_prepare() {
 	default
@@ -440,6 +432,13 @@ src_prepare() {
 	sed -e "s|#version|${PV}|" \
 		-e "s|#date|${mandate}|" \
 		man/page > "${T}"/${PN}.1 || die
+}
+
+src_configure() {
+	export RUSTFLAGS="-Cstrip=none ${RUSTFLAGS}" #835400
+	local myfeatures=( $(usev X clipboard) trash )
+
+	cargo_src_configure --no-default-features
 }
 
 src_install() {
@@ -453,11 +452,6 @@ src_install() {
 	newbashcomp ${PN}.bash ${PN}
 	newbashcomp br.bash br
 
-	insinto /usr/share/zsh/site-functions
-	doins _${PN}
-	doins _br
-
-	insinto /usr/share/fish/vendor_completions.d
-	doins ${PN}.fish
-	doins br.fish
+	dozshcomp _${PN} _br
+	dofishcomp ${PN}.fish br.fish
 }
