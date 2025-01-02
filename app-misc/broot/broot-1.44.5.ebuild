@@ -288,7 +288,7 @@ svgtypes@0.12.0
 syn@1.0.109
 syn@2.0.93
 synstructure@0.13.1
-syntect-5-no-panic@5.2.0
+syntect-no-panic@5.2.0
 system-deps@6.2.2
 target-lexicon@0.12.16
 tempfile@3.14.0
