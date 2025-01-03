@@ -2,7 +2,7 @@
 
 EAPI=8
 
-DESCRIPTION="Unofficial open-source OpenGL/SDL2 reimplementation of Sid Meier's Alpha Centauri"
+DESCRIPTION="Reimplementation of Sid Meier's Alpha Centauri"
 HOMEPAGE="https://github.com/afwbkbc/glsmac"
 
 MY_PV="$(ver_cut 1-2)"
@@ -41,6 +41,10 @@ src_prepare() {
 
 src_install() {
 	dodoc README.md
+
 	exeinto /usr/bin
 	newexe "${S}"_build/bin/GLSMAC glsmac
+
+	insinto /usr/share/glsmac
+	doins -r "${S}"/GLSMAC_data
 }
