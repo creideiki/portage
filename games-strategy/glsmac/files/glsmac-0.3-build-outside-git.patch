@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d723758a..8af02ed2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,17 +10,6 @@ SET( EXECUTABLE_OUTPUT_PATH "bin" )
+ SET( SRC "" )
+ SET( PWD "." )
+ 
+-ADD_CUSTOM_TARGET( glsmac_version )
+-
+-IF ( NOT WIN32 )
+-	ADD_CUSTOM_COMMAND(
+-		TARGET glsmac_version PRE_BUILD
+-		WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+-		COMMAND git show -s --format='\#define GLSMAC_LAST_COMMIT \"%h\"' > ${PROJECT_SOURCE_DIR}/src/tmp/last_commit.h
+-		DEPENDS .git/COMMIT_EDITMSG
+-	)
+-ENDIF ()
+-
+ FUNCTION( SUBDIR DIR )
+ 	SET( PWD "${PWD}/${DIR}" )
+ 	ADD_SUBDIRECTORY( ${DIR} )
+@@ -128,8 +117,6 @@ ELSE ()
+ ENDIF ()
+ 
+ IF ( NOT WIN32 )
+-	ADD_DEPENDENCIES( ${PROJECT_NAME} glsmac_version )
+-
+ 	SET( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread" )
+ 
+ 	TARGET_LINK_OPTIONS( ${PROJECT_NAME} PRIVATE ${FT2_LDFLAGS} ${GLEW_LDFLAGS} ${SDL2_LDFLAGS} ${SDL2IMAGE_LDFLAGS} )
