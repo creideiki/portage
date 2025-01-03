@@ -5,9 +5,9 @@ EAPI=8
 DESCRIPTION="Unofficial open-source OpenGL/SDL2 reimplementation of Sid Meier's Alpha Centauri"
 HOMEPAGE="https://github.com/afwbkbc/glsmac"
 
-MY_COMMIT="75cd5ea"
-SRC_URI="https://github.com/afwbkbc/glsmac/archive/v${PV}-${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 MY_PV="$(ver_cut 1-2)"
+MY_COMMIT="75cd5ea"
+SRC_URI="https://github.com/afwbkbc/glsmac/archive/v${MY_PV}-${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}-${MY_COMMIT}"
 
 PATCHES=(
